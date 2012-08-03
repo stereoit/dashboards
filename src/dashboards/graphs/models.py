@@ -1,5 +1,6 @@
 """
 """
+from random import randrange
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -10,9 +11,10 @@ from colorful.fields import RGBColorField
 class KPI(models.Model):
     """Model representing sets of values in a over a time period"""
     NAME_MAX_LENGTH = 200
-    name = models.CharField(max_length=NAME_MAX_LENGTH, blank=True)
-    history = models.IntegerField(default=100, help_text=_('How long to keep history'))
-    granularity = models.IntegerField(default=60, help_text=_('How often to update the KPI in seconds'))
+    name = models.CharField(max_length=NAME_MAX_LENGTH)
+    history = models.IntegerField(default=100, help_text=_('How long to keep history.'))
+    granularity = models.IntegerField(default=60, help_text=_('How often to update the KPI in seconds.'))
+    generator = models.ForeignKey('KPIGenerator', help_text=_('Associated generator of values.'))
 
     class Meta:
         pass
@@ -73,4 +75,26 @@ class Graph(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('graph' )
+
+class KPIGenerator(models.Model):
+    """Generator of values for each KPI"""
+    name = models.CharField(max_length=100)
+    paralel = models.PositiveIntegerField(default=1, help_text=_('How many values for one timestamp'))
+    min_value = models.PositiveIntegerField(default=0, help_text=_('Minium generated value'))
+    max_value = models.PositiveIntegerField(default=0, help_text=_('Minium generated value'))
+
+    def generate_value(self):
+        """Yield one value given the specs"""
+        for i in xrange(0, randrange(1,self.paralel)):
+            yield randrange(self.min_value, self.max_value)
+
+    class Meta:
+        pass
+
+    def __unicode__(self):
+        return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('kpi-generator' )
 
