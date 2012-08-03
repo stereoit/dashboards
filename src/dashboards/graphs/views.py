@@ -25,12 +25,12 @@ def update_kpis(request):
         if missing_intervals:
             updated_kpis += 1
             last_value = now - delta * kpi.history
-    json_response['kpis'].append({
-        'kpi': kpi.name,
-        'last_generated': last_value.strftime('%c'),
-        'missing_intervals': missing_intervals
-        })
-    logger.debug('kpi {0} last generated at {1} missing_intervals \
-            {2}'.format(kpi, last_value.strftime('%c'), missing_intervals))
+        json_response['kpis'].append({
+            'kpi': kpi.name,
+            'last_generated': last_value.strftime('%c'),
+            'missing_intervals': missing_intervals
+            })
+        logger.debug('kpi {0} last generated at {1} missing_intervals \
+                {2}'.format(kpi, last_value.strftime('%c'), missing_intervals))
     return HttpResponse(simplejson.dumps(json_response),
             mimetype='application/json')
