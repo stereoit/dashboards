@@ -81,11 +81,11 @@ class KPIGenerator(models.Model):
     name = models.CharField(max_length=100)
     paralel = models.PositiveIntegerField(default=1, help_text=_('How many values for one timestamp'))
     min_value = models.PositiveIntegerField(default=0, help_text=_('Minium generated value'))
-    max_value = models.PositiveIntegerField(default=0, help_text=_('Minium generated value'))
+    max_value = models.PositiveIntegerField(default=100, help_text=_('Minium generated value'))
 
     def generate_value(self):
         """Yield one value given the specs"""
-        for i in xrange(0, randrange(1,self.paralel)):
+        for i in xrange(0, randrange(1,self.paralel+1)):
             yield randrange(self.min_value, self.max_value)
 
     class Meta:
