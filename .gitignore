@@ -17,3 +17,5 @@ logs/*
 .idea
 pip-log.txt*
 
+#db
+src/dashboards.db
