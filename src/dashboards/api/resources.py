@@ -1,8 +1,8 @@
 from tastypie import fields
 from tastypie.resources import ModelResource
 from django.contrib.auth.models import User
-from dashboards.graphs.models import Graph, KPI, KPIValue
-from dashboards.graphs.models import ColorPalette, Color
+from dashboards.graphs.models import Graph, KPI, KPIValue, \
+    ColorPalette, Color, KPIGenerator
 
 
 class GraphResource(ModelResource):
@@ -11,6 +11,7 @@ class GraphResource(ModelResource):
 
 class KPIResource(ModelResource):
     values = fields.ToManyField('dashboards.api.KPIValueResource', 'values', full=True)
+    generator = fields.ToOneField('dashboards.api.KPIGeneratorResource', 'generator', full=True)
 
     class Meta:
         queryset = KPI.objects.all()
@@ -36,4 +37,9 @@ class ColorResource(ModelResource):
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
+
+class KPIGeneratorResource(ModelResource):
+    class Meta:
+        queryset = KPIGenerator.objects.all()
+        resource_name = 'generator'
 
