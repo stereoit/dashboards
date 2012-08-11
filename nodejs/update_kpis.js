@@ -12,13 +12,12 @@ var fetch_url = 'http://127.0.0.1:8000/update-kpis/';
 
     console.log('calling %s', fetch_url)
     http.get(fetch_url, function(response) {
-        console.log(response.statusCode)
         response.on('data', function (chunk) {
             var data = JSON.parse(chunk);
-            var next_poll = data['next_poll'] * 1000;
+            var next_poll = data['next_poll']
             console.log('updated kpis: ' + data['updated_kpis'] + 
                 ' next_poll: ' + next_poll + 's'); 
-            setTimeout(update_kpis, next_poll);
+            setTimeout(update_kpis, (next_poll+1) * 1000);
         });
     }).on('error', function(e) {
           console.log("Got error: " + e.message);
