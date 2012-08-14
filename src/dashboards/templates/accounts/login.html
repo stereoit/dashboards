@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="login-form">
+                <h2>Login</h2>
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+                {% comment %}
+                <!--
+                <form method="post" action="{% url 'login' %}">
+                -->
+                {% endcomment %}
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="clearfix">
+                            <input id="id_username" name="username"
+                            maxlength="30" type="text" placeholder="Username">
+                            {{ form.username.errors }}
+                        </div>
+                        <div class="clearfix">
+                            <input type="password" name="password"
+                            id="id_password" placeholder="Password">
+                            {{ form.password.errors }}
+                        </div>
+                        <button class="btn btn-primary" type="submit">Sign in</button>
+                    </fieldset>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+{% endblock %}

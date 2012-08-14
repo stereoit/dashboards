@@ -1,72 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends "base.html" %}
 
-    <!-- Le styles -->
-    <link href="{{ STATIC_URL }}css//bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      /* Override some defaults */
-      html, body {
-        background-color: #eee;
-      }
-      body {
-        padding-top: 40px; 
-      }
-      .container {
-        width: 300px;
-      }
+{% block content %}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button class="btn btn-navbar" data-target=".nav-collapse"
+                data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="nav-collapse collapse" style="height: 0px;">
+                <ul class="nav">
+                    <li class="active">
+                    <a href="./index.html">Overview</a>
+                    </li>
+                    <li class="">
+                    <a href="./scaffolding.html">Scaffolding</a>
+                    </li>
+                    <li class="">
+                    <a href="./base-css.html">Base CSS</a>
+                    </li>
+                    <li class="">
+                    <a href="./components.html">Components</a>
+                    </li>
+                    <li class="">
+                    <a href="./javascript.html">Javascript plugins</a>
+                    </li>
+                    <li class="">
+                    <a href="./less.html">Using LESS</a>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li class="">
+                    <a href="./download.html">Customize</a>
+                    </li>
+                    <li class="">
+                    <a href="./examples.html">Examples</a>
+                    </li>
+                </ul>
+            </div>
 
-      /* The white background content wrapper */
-      .container > .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px; 
-        -webkit-border-radius: 10px 10px 10px 10px;
-           -moz-border-radius: 10px 10px 10px 10px;
-                border-radius: 10px 10px 10px 10px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-                box-shadow: 0 1px 2px rgba(0,0,0,.15);
-      }
+        Hello {{ user.username }}
+          <a class="brand" href="./index.html">Dashboards demo</a>
 
-    .login-form {
-      margin-left: 65px;
-    }
-  
-    legend {
-      margin-right: -50px;
-      font-weight: bold;
-      color: #404040;
-    }
+     </div>
+  </div>
+</div>
 
-    </style>
+<div class="container">
+Hello world page.
+</div>
+{% endblock %}
 
-</head>
-<body>
-  <div class="container">
-      <div class="content">
-          <div class="row">
-              <div class="login-form">
-                  <h2>Login</h2>
-                  <form action="">
-                      <fieldset>
-                          <div class="clearfix">
-                              <input type="text" placeholder="Username">
-                          </div>
-                          <div class="clearfix">
-                              <input type="password" placeholder="Password">
-                          </div>
-                          <button class="btn btn-primary" type="submit">Sign in</button>
-                      </fieldset>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div> <!-- /container -->
-</body>
-</html>
 
