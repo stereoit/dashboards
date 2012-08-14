@@ -2,6 +2,7 @@ from dashboards.api import KPIResource, KPIValueResource, UserResource
 from dashboards.api import ColorResource, ColorPaletteResource, GraphResource
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.decorators import login_required
 from django.views.generic.simple import direct_to_template
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from dashboards.graphs.views import update_kpis
@@ -25,7 +26,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', direct_to_template, {'template':'index.html'}),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', \
+            {'template_name': 'accounts/login.html' }, name='login'),
+    url(r'^$', login_required(direct_to_template), {'template':'index.html'}),
 )
 
 if settings.DEBUG:
