@@ -3,12 +3,21 @@ html, body {
     background-color: #eee;
 }
 body {
-    padding-top: 40px; 
-}
-.container {
-    width: 300px;
+    padding-top: 40px;
+    background-color: #FFFFFF;
 }
 
+.navbar-fixed-top .container { 
+    width: 95%;
+}
+
+.container {
+    width: 90%;
+}
+.container-login {
+    width: 300px;
+    margin: auto;
+}
 /* The white background content wrapper */
 .container > .content {
     background-color: #fff;
@@ -32,3 +41,6 @@ legend {
     color: #404040;
 }
 
+.row-fluid {
+    margin-top: 50px;
+}

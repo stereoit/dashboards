@@ -2,18 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Dashboards based on JS, Twitter Bootstrap, Backbone.js, TastyPie and Django</title>
-    <meta name="description" content="">
+    <title>Realtime Javascript</title>
+    <meta name="description" content="Dashboards based on JS, Twitter Bootstrap, Backbone.js, TastyPie and Django">
     <meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+		{% block head %}{% endblock %}
 
 </head>
 <body>
+ {% block menu %}
+ {% endblock %}
  {% block content %}
- 
+ {% endblock %}
+ {% block scripts %}
+ <script src="{{ STATIC_URL }}js/jquery-1.8.0.js"></script>
+ <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+ <script src="{{ STATIC_URL }}js/bootstrap-collapse.js"></script>
+ <script src="{{ STATIC_URL }}js/dashboards.js"></script>
  {% endblock %}
 </body>
 </html>

@@ -1,54 +1,61 @@
 {% extends "base.html" %}
 
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+
 {% block content %}
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button class="btn btn-navbar" data-target=".nav-collapse"
-                data-toggle="collapse" type="button">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="nav-collapse collapse" style="height: 0px;">
-                <ul class="nav">
-                    <li class="active">
-                    <a href="./index.html">Overview</a>
-                    </li>
-                    <li class="">
-                    <a href="./scaffolding.html">Scaffolding</a>
-                    </li>
-                    <li class="">
-                    <a href="./base-css.html">Base CSS</a>
-                    </li>
-                    <li class="">
-                    <a href="./components.html">Components</a>
-                    </li>
-                    <li class="">
-                    <a href="./javascript.html">Javascript plugins</a>
-                    </li>
-                    <li class="">
-                    <a href="./less.html">Using LESS</a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li class="">
-                    <a href="./download.html">Customize</a>
-                    </li>
-                    <li class="">
-                    <a href="./examples.html">Examples</a>
-                    </li>
-                </ul>
-            </div>
-
-        Hello {{ user.username }}
-          <a class="brand" href="./index.html">Dashboards demo</a>
-
-     </div>
-  </div>
-</div>
-
 <div class="container">
-Hello world page.
+	<div class="row-fluid">
+		<div class="hero-unit">
+			<h1>Realtime dashboards</h1>
+			<p>Technology preview</p>
+			<p>
+			<a class="btn btn-inverse btn-large" href="{% url dashboards-index %}">
+				Let's start
+			</a>
+			</p>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="page-header">
+			<h1>Scaffolding <small>Some thoughts on technologies behind this demo</small></h1>
+		</div>
+		<div class="span1" ></div>
+		<div class="span8" ><p>Those dasboards are built using latest HTML5
+			standards and best practices. Models are stored in PostgreSQL (or any
+			other relational or nosql database), then we use django to provide
+			framework for server side. Twitter boostrap was used to create the page
+			layout. Javascript application is built via Backbone.js and mapping to
+			RESTful interfaces is handled by django-tastypie.</p></div>
+	</div>
+	<div class="row-fluid">
+		<div class=span4>
+			<blockquote class="pull-right">
+				<p>Simplicity is the ultimate sophistication.</p>
+				<small>Leonardo Da Vinci</small>
+			</blockquote>
+		</div>
+		<div class=span4> <strong>This demo shocases</strong>
+			<ul>
+				<li> Realtime Javascipts charts</li>
+				<li> Usage of modern technologies</li>
+				<li> Possibility to change colorscheme</li>
+			</ul>
+		</div>
+		<div class=span4>
+			<address>
+				<strong>stereoIT, s.r.o.</strong>
+				<br>
+				Hermanova 723/16
+				<br>
+				Prague, Holesovice, 170 00
+				<br>
+				<abbr title="Phone">P:</abbr>
+				(420) 776-762378
+			</address>
+		</div>
+	</div>
 </div>
 {% endblock %}
 
