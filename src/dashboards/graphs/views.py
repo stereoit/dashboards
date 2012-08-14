@@ -29,6 +29,7 @@ def update_kpis(request):
                                         / kpi.granularity
             if missing_intervals > kpi.history:
                 missing_intervals = kpi.history
+                latest = None
         except KPIValue.DoesNotExist:
             missing_intervals = kpi.history
 
