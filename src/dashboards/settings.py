@@ -192,5 +192,7 @@ LOGGING = {
 if DEBUG:
     LOGGING['loggers']['']['handlers'] = ['console']
 
+LOGIN_REDIRECT_URL = '/'
+
 # graphs settings
 KPI_HISTORY = 120
