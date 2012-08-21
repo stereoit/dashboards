@@ -55,6 +55,10 @@ def update_kpis(request):
         if next_poll > poll:
             next_poll = poll
 
+        #delete old queries
+        values_to_keep = kpi.values.all()[:kpi.history]
+        kpi.values.exclude(pk__in=values_to_keep).delete()
+
         json_response['kpis'].append({
             'kpi': kpi.name,
             'missing_intervals': missing_intervals,
