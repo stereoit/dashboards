@@ -6,7 +6,11 @@
 
 {% block content %}
 <div class="container">
-	<div class="row-fluid">
-  </div>
+		<div id="dashboardsapp">
+		</div>
 </div>
 {% endblock %}
+
+{% block scripts %} {{ block.super }}
+ <script type="text/javascript" charset="utf-8" data-main="{{ STATIC_URL }}js/main"	 src="{{ STATIC_URL }}js/libs/require/require.js"></script>
+ {% endblock %}
