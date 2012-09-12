@@ -12,5 +12,11 @@
 {% endblock %}
 
 {% block scripts %} {{ block.super }}
+ <script>
+	KPI_API = "{% url api_dispatch_list api_name="v1" resource_name="kpi" %}";
+	KPIVALUE_API = "{% url api_dispatch_list api_name="v1" resource_name="value" %}";
+	DASHBOARD_API = "{% url api_dispatch_list api_name="v1" resource_name="dashboard" %}";
+	PALETTE_API = "{% url api_dispatch_list api_name="v1" resource_name="colorpalette" %}";
+ </script>
  <script type="text/javascript" charset="utf-8" data-main="{{ STATIC_URL }}js/main"	 src="{{ STATIC_URL }}js/libs/require/require.js"></script>
  {% endblock %}
