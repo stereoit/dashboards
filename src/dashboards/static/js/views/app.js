@@ -24,10 +24,11 @@ define([
         Dashboards.on('reset', this.AddAll, this);
         Dashboards.on('all', this.render, this);
         Dashboards.fetch();
-        //this.render();
+        console.log("Dashboards fetched");
     },
 
     render: function() {
+        console.log("Dashboard App render");
         this.$el.html(this.dashboardsTemplate());
         return this;
     },
@@ -36,14 +37,13 @@ define([
         alert("Double clicked");
     },
 
-    // Add all items in the **Todos** collection at once.
     addAll: function() {
+      console.log("Dashboard App addAll");
       Dashboards.each(this.addOne);
     },
 
-    // Add a single todo item to the list by creating a view for it, and
-    // appending its element to the `<ul>`.
     addOne: function(dashboard) {
+      console.log("Dashboard App addOne");
       var view = new DashboardView({model: dashboard});
       this.$("#dashboard-list").append(view.render().el);
     },
