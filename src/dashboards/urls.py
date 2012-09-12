@@ -1,5 +1,5 @@
 from dashboards.api import KPIResource, KPIValueResource, UserResource
-from dashboards.api import ColorResource, ColorPaletteResource, GraphResource
+from dashboards.api import ColorResource, ColorPaletteResource, DashboardResource
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required

@@ -1,13 +1,13 @@
 from tastypie import fields
 from tastypie.resources import ModelResource
 from django.contrib.auth.models import User
-from dashboards.graphs.models import Graph, KPI, KPIValue, \
+from dashboards.graphs.models import Dashboard, KPI, KPIValue, \
     ColorPalette, Color, KPIGenerator
 
 
-class GraphResource(ModelResource):
+class DashboardResource(ModelResource):
     class Meta:
-        queryset = Graph.objects.all()
+        queryset = Dashboard.objects.all()
 
 class KPIResource(ModelResource):
     values = fields.ToManyField('dashboards.api.KPIValueResource', 'values', full=True)

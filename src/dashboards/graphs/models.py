@@ -59,12 +59,12 @@ class Color(models.Model):
     def __unicode__(self):
         return self.name
 
-class Graph(models.Model):
+class Dashboard(models.Model):
     """Mapping between the user and the KPI"""
     kpi = models.ForeignKey('KPI')
     user = models.ForeignKey(User)
     palette = models.ForeignKey('ColorPalette', help_text=_(''))
-    graph_type = models.CharField(max_length=100, help_text=_('Defines the type of graph.'))
+    dashboard = models.CharField(max_length=100, help_text=_('Defines the type of graph.'))
 
     class Meta:
         pass
