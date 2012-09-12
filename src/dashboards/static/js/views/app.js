@@ -17,17 +17,15 @@ define([
         "dblclick #adddashboard"  : "doubleClick"
     },
 
-    dashboards: undefined,
-
     initialize: function() {
-        var config = new Config();
-        dashboards = new Dashboards();
         console.log("Dashboard App initialized");
-        this.render();
+        this.config = new Config();
+        this.dashboards = new Dashboards();
 
-        dashboards.on('reset', this.addAll, this);
-        dashboards.fetch();
+        this.dashboards.on('reset', this.addAll, this);
+        this.dashboards.fetch();
         console.log("Dashboards fetched");
+        this.render();
     },
 
     render: function(event) {
@@ -42,7 +40,7 @@ define([
 
     addAll: function() {
       console.log("Dashboard App addAll ", this);
-      dashboards.each(this.addOne);
+      this.dashboards.each(this.addOne);
     },
 
     addOne: function(dashboard) {
