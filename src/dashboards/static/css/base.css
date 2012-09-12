@@ -42,5 +42,11 @@ legend {
 }
 
 .row-fluid {
-    margin-top: 50px;
+    margin-top: 5px;
+}
+
+.shadowed {
+    -webkit-box-shadow: 0px 0px 5px #888;
+    -mox-box-shadow: 0px 0px 5px #888;
+    box-shadow: 0px 0px 5px #888;
 }

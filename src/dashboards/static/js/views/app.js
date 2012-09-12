@@ -17,18 +17,21 @@ define([
         "dblclick #adddashboard"  : "doubleClick"
     },
 
-    initialize: function() {
-        var shit = new Config();
-        console.log("Dashboard App initialized");
+    dashboards: undefined,
 
-        Dashboards.on('reset', this.AddAll, this);
-        Dashboards.on('all', this.render, this);
-        Dashboards.fetch();
+    initialize: function() {
+        var config = new Config();
+        dashboards = new Dashboards();
+        console.log("Dashboard App initialized");
+        this.render();
+
+        dashboards.on('reset', this.addAll, this);
+        dashboards.fetch();
         console.log("Dashboards fetched");
     },
 
-    render: function() {
-        console.log("Dashboard App render");
+    render: function(event) {
+        console.log("Dashboard App render", event);
         this.$el.html(this.dashboardsTemplate());
         return this;
     },
@@ -38,14 +41,14 @@ define([
     },
 
     addAll: function() {
-      console.log("Dashboard App addAll");
-      Dashboards.each(this.addOne);
+      console.log("Dashboard App addAll ", this);
+      dashboards.each(this.addOne);
     },
 
     addOne: function(dashboard) {
       console.log("Dashboard App addOne");
       var view = new DashboardView({model: dashboard});
-      this.$("#dashboard-list").append(view.render().el);
+      this.$("#dashboardslist").append(view.render().el);
     },
 
   });

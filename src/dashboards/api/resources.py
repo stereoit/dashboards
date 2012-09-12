@@ -6,6 +6,9 @@ from dashboards.graphs.models import Dashboard, KPI, KPIValue, \
 
 
 class DashboardResource(ModelResource):
+    kpi = fields.ForeignKey('dashboards.api.resources.KPIResource', 'kpi')
+    user = fields.ForeignKey('dashboards.api.resources.UserResource', 'user')
+    palette = fields.ForeignKey('dashboards.api.resources.ColorPaletteResource', 'palette')
     class Meta:
         queryset = Dashboard.objects.all()
 

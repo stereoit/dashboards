@@ -14,5 +14,5 @@ define(['underscore','backbone','models/dashboard'], function (_, Backbone, Dash
             return data.objects;
         },
     });
-    return new DashboardsCollection;
+    return DashboardsCollection;
 });
