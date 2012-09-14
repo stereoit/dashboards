@@ -1,5 +1,5 @@
 define(['underscore','backbone','models/dashboard'], function (_, Backbone, DashboardModel){
-    var DashboardsCollection = Backbone.Collection.extend({
+    var DashboardsCollection = Backbone.Tastypie.Collection.extend({
         model: DashboardModel,
 
         url: DASHBOARD_API,
@@ -9,9 +9,6 @@ define(['underscore','backbone','models/dashboard'], function (_, Backbone, Dash
             console.log("API at "+this.url);
         },
 
-        parse: function(data){
-            return data.objects;
-        },
     });
     return DashboardsCollection;
 });

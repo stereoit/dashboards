@@ -1,11 +1,12 @@
 define(['underscore','backbone','models/kpi'], function (_, Backbone, KPIModel){
-    var KPIsCollection = Backbone.Collection.extend({
+    var KPIsCollection = Backbone.Tastypie.Collection.extend({
         model: KPIModel,
         url: KPI_API,
 
-        parse: function(data){
-            return data.objects;
+        initialize: function(){
+            console.log("KPI Collection initialized ");
         },
+
     });
-    return new KPIsCollection;
+    return KPIsCollection;
 });
