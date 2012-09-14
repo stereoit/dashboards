@@ -19,13 +19,14 @@ define([
 
     initialize: function() {
         console.log("Dashboard App initialized");
+        this.render();
         this.config = new Config();
         this.dashboards = new Dashboards();
 
         this.dashboards.on('reset', this.addAll, this);
         this.dashboards.fetch();
         console.log("Dashboards fetched");
-        this.render();
+        this.dashboardslist = $("#dashboardslist");
     },
 
     render: function(event) {
@@ -40,13 +41,13 @@ define([
 
     addAll: function() {
       console.log("Dashboard App addAll ", this);
-      this.dashboards.each(this.addOne);
+      this.dashboards.each(this.addOne, this);
     },
 
     addOne: function(dashboard) {
       console.log("Dashboard App addOne");
       var view = new DashboardView({model: dashboard});
-      this.$("#dashboardslist").append(view.render().el);
+      this.dashboardslist.append(view.render().el);
     },
 
   });
