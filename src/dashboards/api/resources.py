@@ -72,15 +72,15 @@ class KPIGeneratorResource(ModelResource):
         resource_name = 'generator'
 
 class DashboardResource(ModelResource):
-    kpi = fields.ForeignKey('dashboards.api.resources.KPIResource', 'kpi', full=True)
+    #kpi = fields.ForeignKey('dashboards.api.resources.KPIResource', 'kpi', full=True)
     user = fields.ForeignKey('dashboards.api.resources.UserResource', 'user', full=True)
-    palette = fields.ForeignKey('dashboards.api.resources.ColorPaletteResource', 'palette', full=True)
+    #palette = fields.ForeignKey('dashboards.api.resources.ColorPaletteResource', 'palette', full=True)
     #values = fields.ToManyField('dashboards.api.resources.KPIValueResource',)
 
-    def dehydrate(self, bundle):
-        values = [(v.value,v.timestamp) for v in bundle.obj.kpi.values.all()]
-        bundle.data['values'] = values
-        return bundle
+    #def dehydrate(self, bundle):
+    #    values = [(v.value,v.timestamp) for v in bundle.obj.kpi.values.all()]
+    #    bundle.data['values'] = values
+    #    return bundle
 
     def prepend_urls(self):
         return [
