@@ -1,1 +1,7 @@
-<%= dashboard %>
+<p>Name: <%= kpi.name %></p>
+<p>Type: <%= dashboard %></p>
+<p>Colors: <%= palette.name %></p>
+<ul>
+	 <%= values %>
+	<%  _.each(values.models, function(value){ %><li></li> <% }); %>
+</ul>

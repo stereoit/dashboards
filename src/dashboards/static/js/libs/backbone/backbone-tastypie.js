@@ -7,7 +7,7 @@
         idAttribute: 'resource_uri',
 
         url: function() {
-            var url = getValue(this, 'urlRoot') || getValue(this.collection, 'urlRoot') || urlError();
+            var url = getValue(this, 'urlRoot') || getValue(this.collection, 'url') || urlError();
             
             if (this.isNew())
                 return url;

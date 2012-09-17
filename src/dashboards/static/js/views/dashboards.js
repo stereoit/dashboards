@@ -14,12 +14,20 @@ define([
 
             initialize: function(){
                 console.log('Dashboard view intialized ', this.model);
+                this.model.on('initialized', this.modelInitialized, this);
+            },
+
+            modelInitialized: function (){
+                console.log('Dashboard View - model fully initilized');
                 this.model.on('change', this.render, this);
+                this.render();
             },
 
             render: function(){
-                this.$el.html(this.template(this.model.toJSON()));
-                console.log("DashboardView render ", this.$el.html());
+                if(this.model.isInitialized){
+                    console.log("Dashboard View render()",this.model.toJSON());
+                    this.$el.html(this.template(this.model.toJSON()));
+                }
                 return this;
             },
 

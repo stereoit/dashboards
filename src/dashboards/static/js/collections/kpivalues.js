@@ -4,5 +4,5 @@ define(['underscore','backbone','models/kpivalue'], function (_, Backbone, KPIVa
         url: KPIVALUE_API,
 
     });
-    return new KPIValuesCollection;
+    return KPIValuesCollection;
 });
