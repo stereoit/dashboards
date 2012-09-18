@@ -24,10 +24,12 @@ define([
             },
 
             render: function(){
-                if(this.model.isInitialized){
-                    console.log("Dashboard View render()",this.model.toJSON());
-                    this.$el.html(this.template(this.model.toJSON()));
-                }
+                console.log("Dashboard View render()",this.model.toJSON());
+                var data = this.model.toJSON();
+                data.kpi = this.model.kpi.toJSON();
+                data.palette = this.model.palette.toJSON();
+                data.values = this.model.values.toJSON();
+                this.$el.html(this.template(data));
                 return this;
             },
 

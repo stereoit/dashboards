@@ -7,24 +7,29 @@ define(['jquery','underscore','backbone','models/kpi','models/colorpalette','col
 
             this.kpi = new KPI();
             this.kpi.url = this.url()+'kpi';
-            this.kpi.on('change', this.checkInitilization, this);
+            this.kpi._loaded = false;
+            this.kpi.on('change', this.checkInitialization, this);
 
             this.palette = new Palette();
             this.palette.url = this.url()+'palette';
-            this.palette.on('change', this.checkInitilization, this);
+            this.palette._loaded = false;
+            this.palette.on('change', this.checkInitialization, this);
 
             this.values = new Values();
             this.values.url = this.url()+'values';
-            this.values.on('change', this.checkInitilization, this);
+            this.values._loaded = false;
+            this.values.on('change', this.checkInitialization, this);
 
-            this.kpi.fetch();
-            this.palette.fetch();
-            this.values.fetch();
+            var self = this;
+            this.kpi.fetch({success: function(model) { self.kpi._loaded = true}});
+            this.palette.fetch({success: function(model) { self.palette._loaded = true}});
+            this.values.fetch({success: function(model) { self.values._loaded = true}});
         },
 
-        checkInitilization: function(){
-            console.log('Dashboard Model checkInitilization');
-            if (typeof this.kpi === "undefined" || typeof this.palette === "undefined" || typeof this.values  === "undefined" ) {
+        checkInitialization: function(){
+            console.log('Dashboard Model checkInitilization', this);
+            if ( ! this.kpi._loaded || ! this.palette._loaded || ! this.values._loaded ) {
+                console.log('checkInitilization did not pass');
                 return;
             } else {
                 console.log('Dashboard Model initilizaiton complete');
@@ -42,15 +47,6 @@ define(['jquery','underscore','backbone','models/kpi','models/colorpalette','col
             }
         },
 
-        toJSON: function(options){
-            return $.extend( 
-                    {},
-                    //Backbone.Tastypie.Model.prototype.toJSON.call(this, options),
-                    //this.kpi.toJSON(),
-                    //this.palette.toJSON(),
-                    this.values.toJSON()
-                    );
-        },
 
     });
     return DashboardModel;

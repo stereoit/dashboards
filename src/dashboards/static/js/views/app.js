@@ -47,7 +47,7 @@ define([
     addOne: function(dashboard) {
       console.log("Dashboard App addOne");
       var view = new DashboardView({model: dashboard});
-      this.dashboardslist.append(view.render().el);
+      this.dashboardslist.append(view.el);
     },
 
   });
